@@ -1,3 +1,8 @@
+DROP DATABASE IF EXISTS ecommerce;
+
+CREATE DATABASE ecommerce;
+USE ecommerce;
+
 CREATE TABLE clientes (
     id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome varchar(100) NOT NULL,
