@@ -1,13 +1,13 @@
 USE ecommerce;
 
 CREATE VIEW vendedor_bonus AS
-SELECT
+SELECT 
     v.id,
     v.nome,
     v.salario as salario_base,
     fe.bonus,
     (v.salario + fe.bonus) as salario_total
-FROM
+FROM 
     vendedor v
-INNER JOIN
+INNER JOIN 
     funcionario_especial fe ON v.id = fe.vendedor_id;
