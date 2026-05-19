@@ -2,7 +2,7 @@ USE ecommerce;
 
 CREATE USER 'administrador'@'localhost' IDENTIFIED BY 'senha4321';
 CREATE USER 'gerente'@'localhost' IDENTIFIED BY 'senha1234';
-CREATE USER 'funcionario'@'localhost' IDENTIFIED BY 'senha1231;
+CREATE USER 'funcionario'@'localhost' IDENTIFIED BY 'senha1231';
 
 GRANT ALL PRIVILEGES ON ecommerce.* TO 'administrador'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON ecommerce.* TO 'gerente'@'localhost';
