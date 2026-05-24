@@ -14,7 +14,7 @@ CREATE TABLE clientes (
 CREATE TABLE cliente_especial (
     id_cliente int NOT NULL PRIMARY KEY,
     cashback decimal(10,2) NOT NULL,
-    CONSTRAINT cliente_especial_ibfk_1 FOREIGN KEY (id_cliente) REFERENCES clientes (id)
+    FOREIGN KEY (id_cliente) REFERENCES clientes (id)
 );
 
 CREATE TABLE vendedor (
@@ -46,8 +46,7 @@ CREATE TABLE produto (
     valor decimal(10,2) NOT NULL,
     observacoes text DEFAULT NULL,
     vendedor_id int NOT NULL,
-    KEY vendedor_id (vendedor_id),
-    CONSTRAINT produto_ibfk_1 FOREIGN KEY (vendedor_id) REFERENCES vendedor (id)
+    FOREIGN KEY (vendedor_id) REFERENCES vendedor (id)
 );
 
 CREATE TABLE venda (
@@ -57,10 +56,8 @@ CREATE TABLE venda (
     data_hora datetime NOT NULL,
     endereco_destino varchar(255) NOT NULL,
     valor_transporte decimal(10,2) NOT NULL,
-    KEY cliente_id (cliente_id),
-    KEY transportadora_id (transportadora_id),
-    CONSTRAINT venda_ibfk_1 FOREIGN KEY (cliente_id) REFERENCES clientes (id),
-    CONSTRAINT venda_ibfk_2 FOREIGN KEY (transportadora_id) REFERENCES transportadora (id)
+    FOREIGN KEY (cliente_id) REFERENCES clientes (id),
+    FOREIGN KEY (transportadora_id) REFERENCES transportadora (id)
 );
 
 CREATE TABLE venda_item (
@@ -69,7 +66,6 @@ CREATE TABLE venda_item (
     quantidade int NOT NULL,
     valor_unitario decimal(10,2) NOT NULL,
     PRIMARY KEY (venda_id, produto_id),
-    KEY produto_id (produto_id),
-    CONSTRAINT venda_item_ibfk_1 FOREIGN KEY (venda_id) REFERENCES venda (id),
-    CONSTRAINT venda_item_ibfk_2 FOREIGN KEY (produto_id) REFERENCES produto (id)
+    FOREIGN KEY (venda_id) REFERENCES venda (id),
+    FOREIGN KEY (produto_id) REFERENCES produto (id)
 );
