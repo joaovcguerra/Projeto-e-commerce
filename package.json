@@ -1,0 +1,29 @@
+{
+  "name": "projeto-e-commerce",
+  "version": "1.0.0",
+  "description": "Projeto do desenvolvimento de um banco de dados para um e-commerce da cadeira de Banco de Dados II",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaovcguerra/Projeto-e-commerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/joaovcguerra/Projeto-e-commerce/issues"
+  },
+  "homepage": "https://github.com/joaovcguerra/Projeto-e-commerce#readme",
+  "dependencies": {
+    "mariadb": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
