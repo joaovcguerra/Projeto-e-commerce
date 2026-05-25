@@ -52,12 +52,12 @@ BEGIN
     IF v_total_gasto > 500.00 THEN
         SET v_novo_cashback = v_total_gasto * 0.02;
 
-        IF EXISTS (SELECT * FROM cliente_especial WHERE cliente_id = v_cliente_id) THEN
+        IF EXISTS (SELECT * FROM cliente_especial WHERE id_cliente = v_cliente_id) THEN
             UPDATE cliente_especial 
             SET cashback = v_novo_cashback 
-            WHERE cliente_id = v_cliente_id;
+            WHERE id_cliente = v_cliente_id;
         ELSE
-            INSERT INTO cliente_especial (cliente_id, cashback) 
+            INSERT INTO cliente_especial (id_cliente, cashback) 
             VALUES (v_cliente_id, v_novo_cashback);
         END IF;
     END IF;
@@ -70,14 +70,14 @@ FOR EACH ROW
 BEGIN
     DECLARE v_saldo_atual DECIMAL(10,2);
 
-    IF EXISTS (SELECT * FROM cliente_especial WHERE cliente_id = NEW.cliente_id) THEN
+    IF EXISTS (SELECT * FROM cliente_especial WHERE id_cliente = NEW.cliente_id) THEN
         
         SELECT cashback INTO v_saldo_atual 
         FROM cliente_especial 
-        WHERE cliente_id = NEW.cliente_id;
+        WHERE id_cliente = NEW.cliente_id;
 
         IF v_saldo_atual <= 0.00 THEN
-            DELETE FROM cliente_especial WHERE cliente_id = NEW.cliente_id;
+            DELETE FROM cliente_especial WHERE id_cliente = NEW.cliente_id;
         END IF;
     END IF;
 END //
