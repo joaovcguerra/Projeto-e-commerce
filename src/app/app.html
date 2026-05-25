@@ -5,6 +5,11 @@
       1) existe uma árvore de url e uma compoe a outra, e que meu routerLinkActive só irá aplicar as classes caso a url do routerLink daquele seletor for exatmente aquela.
       Sem o options exact, se a url base for a base das outras url(url filhos), a classe tambem será aplicada
   -->
+  <div class="menu__item" routerLinkActive="menu__item--selected" [routerLinkActiveOptions]="{ exact: true }">
+    <a class="menu__link" routerLink="/">
+      Inicial
+    </a>
+  </div>
   <div class="menu__item" routerLinkActive="menu__item--selected" [routerLinkActiveOptions]="{ exact: true }" #rlaBase="routerLinkActive">
     <a class="menu__link" routerLink="componentes">
       Base  {{rlaBase.isActive ? 'Ativado': ''}}
