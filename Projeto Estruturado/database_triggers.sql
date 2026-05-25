@@ -45,8 +45,6 @@ BEGIN
         ELSE
             INSERT INTO cliente_especial (id_cliente, cashback) VALUES (v_cliente_id, v_novo_cashback);
         END IF;
-        SET v_msg = CONCAT('Valor necessário para lidar com todo cash back: R$ ', v_novo_cashback);
-        SIGNAL SQLSTATE '01000' SET MESSAGE_TEXT = v_msg;
     END IF;
 END //
 
