@@ -1,5 +1,4 @@
 DROP DATABASE IF EXISTS ecommerce;
-
 CREATE DATABASE ecommerce;
 USE ecommerce;
 
@@ -8,7 +7,8 @@ CREATE TABLE clientes (
     nome varchar(100) NOT NULL,
     idade int DEFAULT NULL,
     sexo enum('M','F','Outro') DEFAULT NULL,
-    data_nascimento date DEFAULT NULL
+    data_nascimento date DEFAULT NULL,
+    total_comprado decimal(10,2) DEFAULT 0.00
 );
 
 CREATE TABLE cliente_especial (
@@ -23,7 +23,8 @@ CREATE TABLE vendedor (
     causa_social varchar(255),
     tipo varchar(50) NOT NULL,
     nota_media decimal(2,1),
-    salario decimal(10,2) NOT NULL
+    salario decimal(10,2) NOT NULL,
+    total_vendido decimal(10,2) DEFAULT 0.00
 );
 
 CREATE TABLE funcionario_especial (
