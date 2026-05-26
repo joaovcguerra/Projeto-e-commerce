@@ -10,7 +10,7 @@ INNER JOIN funcionario_especial
 ON vendedor.id = funcionario_especial.vendedor_id
 GROUP BY vendedor.nome;
 
-CREATE OR REPLACE VIEW view_produtos_vendedores AS
+CREATE VIEW view_produtos_vendedores AS
 SELECT
     vendedor.nome,
     SUM(venda_item.quantidade) AS total_itens_vendidos,
