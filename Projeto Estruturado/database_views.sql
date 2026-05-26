@@ -1,0 +1,31 @@
+USE ecommerce;
+
+CREATE VIEW view_produtos_vendedores AS
+SELECT
+    vendedor.nome,
+    SUM(venda_item.quantidade) AS total_itens_vendidos,
+    SUM(venda_item.quantidade * venda_item.valor_unitario) AS total_venda_real
+FROM vendedor
+INNER JOIN produto ON vendedor.id = produto.vendedor_id
+INNER JOIN venda_item ON produto.id = venda_item.produto_id
+GROUP BY vendedor.nome;
+
+CREATE VIEW view_vendas_clientes AS
+SELECT 
+    clientes.nome,
+    COUNT(venda.id) AS total_compras,
+    SUM(venda.valor_transporte) AS total_transporte
+FROM clientes 
+INNER JOIN venda
+ON venda.cliente_id = clientes.id
+GROUP BY clientes.nome;
+
+CREATE VIEW view_total_vendas_produto AS
+SELECT 
+    produto.nome,
+    SUM(venda_item.quantidade) AS total_vendido,
+    SUM(venda_item.quantidade * venda_item.valor_unitario) AS valor_total
+FROM produto
+INNER JOIN venda_item
+ON produto.id = venda_item.produto_id
+GROUP BY produto.nome;
