@@ -1,15 +1,5 @@
 USE ecommerce;
 
-CREATE VIEW vendedor_bonus AS
-SELECT 
-    vendedor.nome,
-    COUNT(funcionario_especial.vendedor_id) AS total_bonus,
-    SUM(funcionario_especial.bonus) AS valor_bonus
-FROM vendedor
-INNER JOIN funcionario_especial
-ON vendedor.id = funcionario_especial.vendedor_id
-GROUP BY vendedor.nome;
-
 CREATE VIEW view_produtos_vendedores AS
 SELECT
     vendedor.nome,
