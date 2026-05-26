@@ -60,7 +60,7 @@ BEGIN
         WHERE id_cliente = NEW.cliente_id;
 
         IF v_saldo_atual <= 0.00 THEN
-            DELETE FROM cliente_especial WHERE id_cliente = NEW.cliente_id;
+            DELETE FROM cliente_especial WHERE id_cliente = NEW.cliente_id AND cashback <= 0;
         END IF;
     END IF;
 END //
