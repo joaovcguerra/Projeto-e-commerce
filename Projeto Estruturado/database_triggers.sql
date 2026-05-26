@@ -22,7 +22,6 @@ BEGIN
         ELSE
             INSERT INTO funcionario_especial (vendedor_id, bonus) VALUES (v_vendedor_id, v_bonus);
         END IF;
-        SELECT CONCAT('Bônus salarial necessário para o vendedor ID ', v_vendedor_id, ': R$ ', v_bonus) AS mensagem;
     END IF;
 END //
 
@@ -46,7 +45,6 @@ BEGIN
         ELSE
             INSERT INTO cliente_especial (id_cliente, cashback) VALUES (v_cliente_id, v_novo_cashback);
         END IF;
-        SELECT CONCAT('Cashback necessário para o cliente ID ', v_cliente_id, ': R$ ', v_novo_cashback) AS mensagem;
     END IF;
 END //
 
