@@ -10,14 +10,14 @@ INNER JOIN funcionario_especial
 ON vendedor.id = funcionario_especial.vendedor_id
 GROUP BY vendedor.nome;
 
-CREATE VIEW view_produtos_vendedores AS
+CREATE OR REPLACE VIEW view_produtos_vendedores AS
 SELECT
     vendedor.nome,
-    COUNT(produto.id) AS total_produto,
-    SUM(produto.valor) AS total_venda 
+    SUM(venda_item.quantidade) AS total_itens_vendidos,
+    SUM(venda_item.quantidade * venda_item.valor_unitario) AS total_venda_real
 FROM vendedor
-INNER JOIN produto
-ON vendedor.id = produto.vendedor_id
+INNER JOIN produto ON vendedor.id = produto.vendedor_id
+INNER JOIN venda_item ON produto.id = venda_item.produto_id
 GROUP BY vendedor.nome;
 
 CREATE VIEW view_vendas_clientes AS
